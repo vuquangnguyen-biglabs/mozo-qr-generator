@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mozo QR Generator</title>
+  <script type="text/javascript" src="https://unpkg.com/qr-code-styling/lib/qr-code-styling.js"></script> 
+  <link rel="stylesheet" href="src/style.css">
+  <link id="appFavicon" rel="icon" type="image/x-icon" href="src/mozo_icon.png">
+</head>
+
+<body>
+  <header id="header"><h1>Mozo QR Generator</h1></header>
+  <section id="content">
+
+    <div>
+
+      <form id="qrForm" onsubmit="return false;">
+
+        <div class="inputContainer">
+          <label for="schemeInput">Scheme</label>
+          <input type="text" onchange="updateQrData();" name="schemeInput" id="schemeInput" value="mozox.shopper://bus?id="/>
+        </div>
+
+        <div class="inputContainer">
+
+          <label for="dataInput">Nhập ID (mỗi ID 1 dòng)</label>
+
+          <textarea type="text" onchange="updateQrData();" name="dataInput" id="dataInput" placeholder="Bus Id" required></textarea>
+
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <form id="qrForm" onsubmit="return false;">
+        <div class="inputContainer">
+
+          <label for="imageInput">Logo</label>
+
+          <input type="file" onchange="updateQrData();" name="imageInput" id="imageInput" accept="image/*" value="c:/src/mozo_icon.png" />
+
+        </div>  
+
+        <div class="inputContainer">
+
+          <label for="colorInput">Màu Code</label>
+
+          <input type="color" onchange="updateQrData();" name="colorInput" id="colorInput" />
+
+        </div>  
+
+        <div class="inputContainer">
+
+          <label for="typeInput">Kiểu Code</label>
+
+          <select name="typeInput" id="typeInput" onchange="updateQrData();">
+
+            <option value="square">Vuông góc</option>
+
+            <option value="rounded">Bo góc</option>
+
+            <option value="dots">Chấm bi</option>
+
+          </select>
+
+        </div> 
+      </form>
+    </div>
+
+  </section>
+
+  <table id="resultTable">
+    <tr id="col_header">
+      <th class="col_id">ID</th>
+      <th class="col_raw_data">Raw Data</th>
+      <th>QR Code</th>
+      <th>Preview</th>
+    </tr>
+  </table>
+
+  <script type="text/javascript" src="src/qr.js"></script>
+</body>
+
+</html>
